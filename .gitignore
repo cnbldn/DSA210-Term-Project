@@ -8,6 +8,7 @@ wheels/
 data/
 *.json
 *.csv
+.ipynb_checkpoints/
 
 # Virtual environments
 .venv
