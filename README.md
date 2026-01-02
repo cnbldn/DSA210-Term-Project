@@ -71,17 +71,17 @@ Fail to reject H0
 4. Channel names were extracted from the 'Subtitles' field
 ## Exploratory Data Analysis (EDA)
 
-![](/assets/perhour.png)
+![](/assets/eda/perhour.png)
 
-![](/assets/perday.png)
+![](/assets/eda/perday.png)
 
-![](/assets/heatmap.png)
+![](/assets/eda/heatmap.png)
 
-![](/assets/mostcommonwords.png)
+![](/assets/eda/mostcommonwords.png)
 
-![](/assets/mostwatcedchannels.png)
+![](/assets/eda/mostwatcedchannels.png)
 
-![](/assets/categories.png)
+![](/assets/eda/categories.png)
 
 
 ## Tools
