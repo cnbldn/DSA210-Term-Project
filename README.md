@@ -7,6 +7,7 @@ The goal of this project is to explore the entirety of my Youtube data, which in
 I will be using Google Takeout to collect my Youtube data. The downloaded data includes the following: channels, clips, comments, creator-demographics, history, kids,live chats, music (library and uploads), playlists, shopping, subscriptions, support issues ,video metadata ,videos. I will not be using all of this data, but having them will be useful if there arises a need for that data. The downloaded data will be in .csv and .json formats.
 
 --
+# EDA
 
 ## Hypotheses
 
@@ -84,5 +85,42 @@ Fail to reject H0
 ![](/assets/eda/categories.png)
 
 
-## Tools
+# Machine Learning
+Following the Exploratory Data Analysis, I applied several Machine Learning techniques to transition from describing past behavior to predicting future viewing habits.
+
+## Chanel Prediction from Video Titles
+The goal here was to see if the video titles were enough to determine which channels they belonged to. I used my top 15 channels as classes. After a certain point, the channels wouldn't have enough videos that I've watched to justify being taken into consideration. I could trust that I had enough videos watched from my top 15 channels. 
+
+TF-IDF Vectorization was used to run Multinomial Naive Bayes
+
+### Results
+The model achieved an accuracy score of 82%.
+
+Confusion matrix:
+![](/assets/ml/confusion_matrix.png)
+
+## Next Video Prediction (Markov Chains)
+This showed which channel I will watch given the current channel I am watching. To do this, a transition Probability Matrix was constructed from my chronological viewing history. Calculationg the probability $P(Next | Current)$ reveals distinct loops.
+
+The most recent 20% of my watch history was split to be the test set data. The rest was used to train the model.
+
+### Results
+It is clear from the heatmap that I tend to binge channels. When I watch a video from one channel, I usually keep watching from the same channel.
+
+### Results
+* MAE: 18.13
+* R²: 0.04.
+Daily video consumption is very difficult to predict given only calendar and lag data. The low R² score signifies that there are heavy external factors that weigh in.
+
+Time Series Forecast vs. Actual
+![](/assets/ml/forecast.png)
+
+Transition Heatmap:
+![](/asstes/ml/markov_headmap.png)
+
+## Predict the Number of Videos I Will Watch in the Future (Time Series Forecasting)
+Used a Random Forest Regressor with engineered "lag" features. Lag1 and Lag7 represent 1 day ago's video count and 7 days ago's video count.
+
+
+# Tools
 Python, Pandas, NumPy, Matplotlib, Seaborn, SciPy, Jupyter, Git
