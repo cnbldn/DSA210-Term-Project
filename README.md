@@ -1,6 +1,6 @@
 # DSA210-Term-Project
 
-## Project Proposal
+## Motivation and Project Proposal
 The goal of this project is to explore the entirety of my Youtube data, which includes search history, watch history, subscriptions etc. Since I've been using the same account for most of my life, I will be able to visualize how my usage evolved over time, how my interests changed, what type of content I keep coming back to, how my watchtime changes during the year and more! Youtube is most probably the site I have spent the most time on in my life so I am genuinely curious about what I will uncover about my usage. I expect to see my usage drop significantly during school semesters, and content switch to school related topics, and during holidays, increase significantly with hobby related content consumption.
 
 ## Data and Data Collection
@@ -130,7 +130,11 @@ As a bonus, I plotted which feature was most successful in predicting the result
 4. Shifted the chronologically stored data by -1 to populate a `next_channel` variable.
 5. Filtered the top 15 channels to solve a problem where most of the channels had insufficient data for training.
 
+# Limitations and Future Work
 
+* The Time Series model failed to predict daily usage with R² = 0.04
+* Channel prediction was restricted to top 15 channels. The "long tail" of my subscriptions did not have enough data points for the Naive Bayes model to function properly.
+* Instead of predicting specific channel names, grouping channels into broader categories like 'gaming' or 'music' would allow me to utilize the entire dataset for classification.
 
 # Tools
-Python, Pandas, NumPy, Matplotlib, Seaborn, SciPy, Jupyter, Git
+Python, Pandas, NumPy, Matplotlib, Seaborn, SciPy, scikit-learn, Jupyter, Git
