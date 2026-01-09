@@ -132,7 +132,7 @@ As a bonus, I plotted which feature was most successful in predicting the result
 
 # Limitations and Future Work
 
-* The Time Series model failed to predict daily usage with R² = 0.04
+* The Time Series model failed to predict daily usage with R² = 0.04. Historical data alone is not enough without other factors.
 * Channel prediction was restricted to top 15 channels. The "long tail" of my subscriptions did not have enough data points for the Naive Bayes model to function properly.
 * Instead of predicting specific channel names, grouping channels into broader categories like 'gaming' or 'music' would allow me to utilize the entire dataset for classification.
 
