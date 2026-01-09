@@ -102,10 +102,15 @@ Confusion matrix:
 ## Next Video Prediction (Markov Chains)
 This showed which channel I will watch given the current channel I am watching. To do this, a transition Probability Matrix was constructed from my chronological viewing history. Calculationg the probability $P(Next | Current)$ reveals distinct loops.
 
-The most recent 20% of my watch history was split to be the test set data. The rest was used to train the model.
-
 ### Results
 It is clear from the heatmap that I tend to binge channels. When I watch a video from one channel, I usually keep watching from the same channel.
+
+Transition Heatmap:
+![](/asstes/ml/markov_headmap.png)
+
+
+## Predict the Number of Videos I Will Watch in the Future (Time Series Forecasting)
+Used a Random Forest Regressor with engineered "lag" features. Lag1 and Lag7 represent 1 day ago's video count and 7 days ago's video count. The most recent 20% of my watch history was split to be the test set data. The rest was used to train the model.
 
 ### Results
 * MAE: 18.13
@@ -115,11 +120,16 @@ Daily video consumption is very difficult to predict given only calendar and lag
 Time Series Forecast vs. Actual
 ![](/assets/ml/forecast.png)
 
-Transition Heatmap:
-![](/asstes/ml/markov_headmap.png)
+As a bonus, I plotted which feature was most successful in predicting the results:
+![](/assets/ml/usage_predictor.png)
 
-## Predict the Number of Videos I Will Watch in the Future (Time Series Forecasting)
-Used a Random Forest Regressor with engineered "lag" features. Lag1 and Lag7 represent 1 day ago's video count and 7 days ago's video count.
+## Feature Engineering for Machine Learning
+1. Converted `clean_title` into numeric vecors using TF-IDF.
+2. Converted raw timestamps into daily video counts for regression.
+3. Created `lag_1` (videos watched yesterday) and `lag_7` (videos watched same day last week) to look for correlation.
+4. Shifted the chronologically stored data by -1 to populate a `next_channel` variable.
+5. Filtered the top 15 channels to solve a problem where most of the channels had insufficient data for training.
+
 
 
 # Tools
